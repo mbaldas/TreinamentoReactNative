@@ -1,13 +1,17 @@
-import React, {Component} from 'react'; // 1
-import SearchBar from './components/searchbar'
-import {Text, View, StyleSheet} from 'react-native'; // 2
+import React, {Component} from 'react';
+import HomeScreen from './screens/home'
+import DetailsScreen from './screens/details'
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default class App extends Component {
-  render() {
-    return (
-      <View>
-        <SearchBar></SearchBar>
-      </View>
-    );
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: DetailsScreen,
+  },
+  {
+    initialRouteName: 'Home',
   }
-}
+);
+
+export default createAppContainer(AppNavigator);
